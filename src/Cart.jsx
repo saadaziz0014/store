@@ -1,17 +1,8 @@
-// Cart.js
-
 import React from "react";
 import CartItem from "./CartItem";
+import "./App.css";
 
 const Cart = ({ cartItems, removeFromCart, makePayment }) => {
-  // Calculate total price
-  //   const totalPrice = cartItems.reduce((total, item) => {
-  //     const itemPrice = Number(item.price);
-  //     if (!isNaN(itemPrice)) {
-  //       return total + itemPrice * item.quantity;
-  //     }
-  //     return total;
-  //   }, 0);
   let totalPrice = 0;
   console.log(
     cartItems.map((o) => {
@@ -24,7 +15,7 @@ const Cart = ({ cartItems, removeFromCart, makePayment }) => {
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
+        <div className="cartItems">
           {cartItems.map((item) => (
             <CartItem
               key={item.id}
@@ -32,11 +23,17 @@ const Cart = ({ cartItems, removeFromCart, makePayment }) => {
               removeFromCart={removeFromCart}
             />
           ))}
-          <div>
-            <h3>Total Price: ${totalPrice}</h3>
-            <button onClick={makePayment}>Make Payment</button>
-          </div>
         </div>
+      )}
+      {cartItems.length != 0 ? (
+        <div>
+          <h3 className="heading-4">Total Price: ${totalPrice}</h3>
+          <button onClick={makePayment} className="btn btn-success">
+            Make Payment
+          </button>
+        </div>
+      ) : (
+        <p></p>
       )}
     </div>
   );

@@ -35,6 +35,13 @@
 
 .card {
   padding: 2em;
+  width: 35%;
+  height: 10%;
+}
+
+.cartItems{
+  display: flex;
+  justify-content: space-between;
 }
 
 .read-the-docs {
